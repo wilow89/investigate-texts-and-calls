@@ -31,14 +31,13 @@ def setupcallloglist(callhistory):
     """
     call_log = {}
     for callinfo in callhistory:
-        if (callinfo[0] not in call_log) and (callinfo[1] not in call_log):
+        if (callinfo[0] not in call_log):
             call_log[callinfo[0]] = int(callinfo[3])
-            call_log[callinfo[1]] = int(callinfo[3])
-        elif callinfo[0] in call_log:
+        else:
             call_log[callinfo[0]] += int(callinfo[3])
+        if (callinfo[1] not in call_log):
             call_log[callinfo[1]] = int(callinfo[3])
         else:
-            call_log[callinfo[0]] = int(callinfo[3])
             call_log[callinfo[1]] += int(callinfo[3])
 
     return call_log
